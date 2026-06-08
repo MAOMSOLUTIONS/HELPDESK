@@ -1,0 +1,89 @@
+ADVANCED HELPDESK PERFORMANCE REPORT
+Generated on: 2026-04-09 14:29:49
+
+STASTISTICS BY STATUS
+                Total  Avg_Aging  Out_of_SLA
+Current_Status                              
+ABIERTO            70       24.9          45
+CERRADO           310        5.8         147
+
+TECHNICIAN DISPERSION (OUT OF SLA ANALYSIS)
+                             Tickets_ABIERTO  Tickets_CERRADO  Out_of_SLA_ABIERTO  Out_of_SLA_CERRADO  Total_Days_Delay_ABIERTO  Total_Days_Delay_CERRADO  Avg_Aging_ABIERTO  Avg_Aging_CERRADO
+Resp                                                                                                                                                                                           
+CASAS VALDEZ VICTOR MANUEL                 9                9                   8                   6                       333                        37               39.9                6.3
+CLEMENTE CLEMENTE ELIZABETH                2               37                   1                   9                        24                        62               14.5                3.0
+DANIEL OCHOA                               0                3                   0                   1                         0                         4                0.0                2.3
+ERICK POZAS                                9               30                   5                  10                       217                        56               26.7                3.7
+GARCIA ROMERO MANUEL                      25               72                  16                  36                       692                       299               30.5                6.2
+JAIME CABALLERO                            1                4                   1                   0                        56                         0               59.0                0.5
+SABINO NAVARRO                             2                6                   1                   4                        18                        39               11.0                8.5
+SALAZAR MARTINEZ ERNESTO                  16              149                  13                  81                       223                       691               16.8                6.8
+SIN ASIGNAR                                6                0                   0                   0                         0                         0                1.2                0.0
+
+RECURRING REQUEST PATTERNS
+                                 Occurrences  Impact_Days_Delay
+Pattern                                                        
+buena tarde su apoyo para                  7                 13
+de favor nos apoyan a                      6                112
+buena tarde su apoyo por                   6                  2
+hola vic buenas tardes tu                  5                 56
+buen día su apoyo para                     5                 33
+hola equipo buen día de                    4                 16
+hola equipo buena tarde de                 4                 34
+buen día por favor su                      4                 41
+buen día su apoyo por                      3                  0
+buen día solicitando de su                 3                 14
+buena tarde por favor su                   3                 30
+buenas tardes nos pueden apoyar            3                 25
+hola manuel tu ayuda para                  3                  1
+buenas tardes solicito de su               3                  0
+buen día por favor de                      3                 12
+
+TOP REQUESTING DEPARTMENTS
+Depto
+SERVICIO AL CLIENTE                      166
+MOD GENERAL ACONDICIONAM. DE PRODUCTO     57
+COBRANZAS Y ACLARACIONES                  17
+MOI GENERAL DIST.ALMACENAJE               17
+RECURSOS HUMANOS                          16
+ADMINISTRACION DE RIESGOS                 14
+TRAFICO IMPORTACIONES                     13
+MOD GENERAL EMBARQUE                      12
+TRAFICO DISTRIBUCION                      12
+ADMINISTRACION Y FINANZAS                 11
+
+TOP REQUESTING USERS
+User                       Depto                                
+DANIEL SANCHEZ             SERVICIO AL CLIENTE                      29
+DARINKA VALENCIA           SERVICIO AL CLIENTE                      27
+BRENDA MEDINA              SERVICIO AL CLIENTE                      25
+MARIN DIAZ DELIA BRISEIDA  SERVICIO AL CLIENTE                      25
+HERNANDEZ DIEGO VERONICA   MOD GENERAL ACONDICIONAM. DE PRODUCTO    23
+REYES NOYOLA JUAN CARLOS   MOD GENERAL ACONDICIONAM. DE PRODUCTO    14
+CITLALLI HUERTA            MOD GENERAL ACONDICIONAM. DE PRODUCTO    12
+GRANADOS CARRILLO EDUARDO  MOD GENERAL EMBARQUE                     12
+MICHELLE MORENO            TRAFICO DISTRIBUCION                     12
+IBARRA GONZALEZ CARLOS     MOI GENERAL DIST.ALMACENAJE              12
+
+CRITICAL TICKETS (OUT OF TIME & HIGH DELAY)
+        ID Fecha_alta                        Resp      SLA_Type  Aging_Days  Days_Over_SLA                                  Depto
+376  11738 2026-01-02        GARCIA ROMERO MANUEL  NORMAL (72h)          97             94              ADMINISTRACION DE RIESGOS
+292  11822 2026-01-20        GARCIA ROMERO MANUEL  NORMAL (72h)          79             76  MOI GENERAL DIST.SURTIDO Y VERIFICADO
+297  11817 2026-01-20  CASAS VALDEZ VICTOR MANUEL  NORMAL (72h)          79             76  MOD GENERAL ACONDICIONAM. DE PRODUCTO
+287  11827 2026-01-22        GARCIA ROMERO MANUEL  NORMAL (72h)          77             74                       CONTROL INTEERNO
+282  11832 2026-01-26  CASAS VALDEZ VICTOR MANUEL  NORMAL (72h)          73             70                    SERVICIO AL CLIENTE
+279  11835 2026-01-27        GARCIA ROMERO MANUEL  NORMAL (72h)          72             69  MOD GENERAL ACONDICIONAM. DE PRODUCTO
+269  11845 2026-01-28  CASAS VALDEZ VICTOR MANUEL  NORMAL (72h)          71             68  MOD GENERAL ACONDICIONAM. DE PRODUCTO
+267  11847 2026-01-29        GARCIA ROMERO MANUEL  NORMAL (72h)          70             67                       RECURSOS HUMANOS
+252  11862 2026-02-04                 ERICK POZAS  NORMAL (72h)          64             61            MOI GENERAL DIST.ALMACENAJE
+234  11880 2026-02-09             JAIME CABALLERO  NORMAL (72h)          59             56                    SERVICIO AL CLIENTE
+229  11885 2026-02-10        GARCIA ROMERO MANUEL  NORMAL (72h)          58             55                    SERVICIO AL CLIENTE
+222  11892 2026-02-11                 ERICK POZAS  NORMAL (72h)          57             54                    SERVICIO AL CLIENTE
+221  11893 2026-02-12        GARCIA ROMERO MANUEL  NORMAL (72h)          56             53                       RECURSOS HUMANOS
+208  11906 2026-02-16  CASAS VALDEZ VICTOR MANUEL  NORMAL (72h)          52             49  MOD GENERAL ACONDICIONAM. DE PRODUCTO
+198  11916 2026-02-18        GARCIA ROMERO MANUEL  NORMAL (72h)          50             47                    SERVICIO AL CLIENTE
+189  11925 2026-02-20    SALAZAR MARTINEZ ERNESTO  NORMAL (72h)          48             45              ADMINISTRACION Y FINANZAS
+173  11941 2026-02-24                 ERICK POZAS  NORMAL (72h)          44             41  MOD GENERAL ACONDICIONAM. DE PRODUCTO
+239  11875 2026-02-09        GARCIA ROMERO MANUEL  NORMAL (72h)          39             36                    SERVICIO AL CLIENTE
+143  11971 2026-03-02    SALAZAR MARTINEZ ERNESTO  NORMAL (72h)          38             35                    SERVICIO AL CLIENTE
+128  11986 2026-03-03        GARCIA ROMERO MANUEL  NORMAL (72h)          37             34                       RECURSOS HUMANOS

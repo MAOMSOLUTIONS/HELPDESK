@@ -1,0 +1,494 @@
+
+    <html><head>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f3f6; margin: 0; padding: 15px; }
+        .box { background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 25px; }
+        .hdr { background: #1a73e8; color: #fff; padding: 30px; text-align: center; }
+        .nav { background: #eaeff2; padding: 12px; text-align: center; border-bottom: 1px solid #d1d9e0; }
+        .nav a { text-decoration: none; color: #1a73e8; font-weight: bold; font-size: 8px; margin: 0 5px; text-transform: uppercase; }
+        .p-20 { padding: 20px; }
+        .sh { background: #f8f9fa; border-left: 5px solid #1a73e8; padding: 10px 15px; margin: 25px 0 10px; font-weight: bold; color: #1a73e8; font-size: 13px; display: flex; align-items: center; }
+        .top-l { margin-left: auto; font-size: 9px; color: #aaa; text-decoration: none; }
+        table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+        th { text-align: left; background: #f1f3f4; padding: 10px; border-bottom: 2px solid #dae1e7; color: #444; cursor: pointer; text-transform: uppercase; }
+        th:hover { background: #e8eaed; }
+        td { padding: 8px; border-bottom: 1px solid #f0f0f0; }
+        .interactive-note { font-size: 9px; color: #888; font-style: italic; margin-bottom: 10px; text-transform: uppercase; }
+    </style>
+    
+    <script>
+    function sortTable(el, isNumeric) {
+        var table = el.closest('table');
+        var colIndex = el.cellIndex;
+        var rows = Array.from(table.rows).slice(1);
+        var dir = table.getAttribute("data-sort-dir") === "asc" ? "desc" : "asc";
+        table.setAttribute("data-sort-dir", dir);
+        
+        rows.sort(function(a, b) {
+            var valA = a.cells[colIndex].innerText.replace(/[%,D,d]/g, '').trim();
+            var valB = b.cells[colIndex].innerText.replace(/[%,D,d]/g, '').trim();
+            if (isNumeric) {
+                var nA = parseFloat(valA) || 0;
+                var nB = parseFloat(valB) || 0;
+                return dir === "asc" ? nA - nB : nB - nA;
+            }
+            return dir === "asc" ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        });
+        
+        var tbody = table.querySelector('tbody') || table;
+        rows.forEach(row => tbody.appendChild(row));
+    }
+    </script>
+    </head><body>
+    <div id="top" class="box">
+        <div class="hdr"><h1 style="margin:0">HELP DESK 2026</h1></div>
+        <div class="nav">
+            <a href="#months">MENSUAL</a> | <a href="#monitor">CRISIS</a> | <a href="#user">USUARIOS</a> | <a href="#tech">TÉCNICOS</a> | <a href="#cat">CATEGORÍAS</a>
+        </div>
+        <div class="p-20">
+            <div class="interactive-note">💡 PARA ORDENADO DINÁMICO, ABRIR ESTE REPORTE EN UN NAVEGADOR (VER EN EXPLORADOR).</div>
+            
+    <div style="margin-bottom: 25px;">
+        <div style="font-size: 10px; font-weight: 800; color: #5f6368; text-transform: uppercase; margin-bottom: 6px; border-bottom: 1px solid #dae1e7; padding-bottom: 3px;">STATUS GLOBAL DE REQUERIMIENTOS 2026 (ACUMULADO)</div>
+        <table width="100%" border="0" cellspacing="10" cellpadding="0" style="table-layout: fixed;">
+            <tr>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#1a73e8;">408</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">TOTAL</div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#1a73e8;">335</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">CERRADOS</div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#10b981;">181</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">CERRADOS TIEMPO</div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#ef4444;">154</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">FUERA SLA</div>
+                </td>
+                <td align="center" style="background:#f8f9fa; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#64748b;">73</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">HD ABIERTOS</div>
+                    <div style="font-size: 8px; color: #888; font-weight: bold; margin-top: 4px;">
+                        <span style="color:#10b981;">9 IN-SLA</span> | <span style="color:#ef4444;">64 FUERA</span>
+                    </div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#1a73e8;">44.4%</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">KPI (%)</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+            
+    <div style="margin-bottom: 25px;">
+        <div style="font-size: 10px; font-weight: 800; color: #5f6368; text-transform: uppercase; margin-bottom: 6px; border-bottom: 1px solid #dae1e7; padding-bottom: 3px;">SNAPSHOT OPERATIVO MES: ABRIL 2026</div>
+        <table width="100%" border="0" cellspacing="10" cellpadding="0" style="table-layout: fixed;">
+            <tr>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#1a73e8;">57</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">TOTAL</div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#1a73e8;">11</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">CERRADOS</div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#10b981;">9</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">CERRADOS TIEMPO</div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#ef4444;">2</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">FUERA SLA</div>
+                </td>
+                <td align="center" style="background:#f8f9fa; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#64748b;">46</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">HD ABIERTOS</div>
+                    <div style="font-size: 8px; color: #888; font-weight: bold; margin-top: 4px;">
+                        <span style="color:#10b981;">9 IN-SLA</span> | <span style="color:#ef4444;">37 FUERA</span>
+                    </div>
+                </td>
+                <td align="center" style="background:#fff; border:1px solid #dae1e7; border-radius:8px; padding:12px;">
+                    <div style="font-size:20px; font-weight:800; color:#1a73e8;">15.8%</div>
+                    <div style="font-size:8px; color:#777; text-transform:uppercase; margin-top:5px; font-weight:bold;">KPI (%)</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+            <div id="months" class="sh">1. RESUMEN MENSUAL <a href="#top" class="top-l">↑ MENU</a></div>
+            <table><thead><tr><th onclick="sortTable(this, false)">AÑO</th><th onclick="sortTable(this, false)">MES</th><th onclick="sortTable(this, true)">TOTAL</th><th onclick="sortTable(this, true)">CERRADOS</th><th onclick="sortTable(this, true)">CERRADOS TIEMPO</th><th onclick="sortTable(this, true)">CERRADOS FUERA SLA</th><th onclick="sortTable(this, true)">ABIERTOS TIEMPO</th><th onclick="sortTable(this, true)">ABIERTOS FUERA SLA</th><th onclick="sortTable(this, true)">KPI %</th></tr></thead>
+            <tbody><tr><td>2026</td><td>ABRIL</td><td>57</td><td>11</td><td>9</td><td>2</td><td style='color:#10b981; font-weight:bold;'>9</td><td style='color:#ef4444; font-weight:bold;'>37</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 15.789473684210526%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">15.8%</span>
+    </td></tr><tr><td>2026</td><td>MARZO</td><td>120</td><td>99</td><td>68</td><td>31</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>21</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 56.666666666666664%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">56.7%</span>
+    </td></tr><tr><td>2026</td><td>FEBRERO</td><td>114</td><td>110</td><td>52</td><td>58</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>4</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 45.614035087719294%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">45.6%</span>
+    </td></tr><tr><td>2026</td><td>ENERO</td><td>117</td><td>115</td><td>52</td><td>63</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 44.44444444444444%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">44.4%</span>
+    </td></tr></tbody></table>
+
+            <div id="monitor" class="sh">MONITOR DE HD POR VENCER (ABRIL) <a href="#top" class="top-l">↑ MENU</a></div>
+            <div style="display: table; width: 100%; border-spacing: 12px; border-collapse: separate;">
+                <div style="display: table-cell; border: 1px solid #fee2e2; border-radius: 8px; padding: 12px; background:#fffafa; width:50%; vertical-align: top;">
+                    <div style="color:#b91c1c; font-weight:bold; font-size:11px; margin-bottom:10px;">VENCIDOS DEL MES (>72 HRS)</div>
+                    <div style="max-height: 350px; overflow-y: auto;"><table><tbody><tr><td>12086</td><td>SERGIO ALCAL</td><td style='color:#b91c1c; font-weight:bold;'>12.6D</td></tr><tr><td>12087</td><td>VALERIA SOLI</td><td style='color:#b91c1c; font-weight:bold;'>11.6D</td></tr><tr><td>12093</td><td>EDGAR MORA</td><td style='color:#b91c1c; font-weight:bold;'>7.6D</td></tr><tr><td>12095</td><td>PAEZ LOPEZ P</td><td style='color:#b91c1c; font-weight:bold;'>7.6D</td></tr><tr><td>12094</td><td>PAEZ LOPEZ P</td><td style='color:#b91c1c; font-weight:bold;'>7.6D</td></tr><tr><td>12096</td><td>PAEZ LOPEZ P</td><td style='color:#b91c1c; font-weight:bold;'>7.6D</td></tr><tr><td>12091</td><td>EDGAR MORA</td><td style='color:#b91c1c; font-weight:bold;'>7.6D</td></tr><tr><td>12090</td><td>MICHELLE MOR</td><td style='color:#b91c1c; font-weight:bold;'>7.6D</td></tr><tr><td>12089</td><td>ARCE ORTEGA </td><td style='color:#b91c1c; font-weight:bold;'>7.6D</td></tr><tr><td>12097</td><td>REYES NOYOLA</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12098</td><td>HERNANDEZ DI</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12099</td><td>DANIEL SANCH</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12100</td><td>GRANADOS CAR</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12103</td><td>ELIZABETH OR</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12104</td><td>HERNANDEZ DI</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12105</td><td>VALERIA SOLI</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12106</td><td>GRANADOS CAR</td><td style='color:#b91c1c; font-weight:bold;'>6.6D</td></tr><tr><td>12108</td><td>GRANADOS CAR</td><td style='color:#b91c1c; font-weight:bold;'>5.6D</td></tr><tr><td>12110</td><td>ANDRÉS REBOL</td><td style='color:#b91c1c; font-weight:bold;'>5.6D</td></tr><tr><td>12113</td><td>DARINKA VALE</td><td style='color:#b91c1c; font-weight:bold;'>5.6D</td></tr><tr><td>12112</td><td>DANIEL SANCH</td><td style='color:#b91c1c; font-weight:bold;'>5.6D</td></tr><tr><td>12123</td><td>RODRIGUEZ BA</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12115</td><td>MARIN DIAZ D</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12116</td><td>RODRIGUEZ BA</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12117</td><td>MICHEL BAZAN</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12119</td><td>EVELINE GARC</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12120</td><td>MICHEL BAZAN</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12121</td><td>MARTINEZ GAS</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12124</td><td>DANIEL SANCH</td><td style='color:#b91c1c; font-weight:bold;'>4.6D</td></tr><tr><td>12128</td><td>BRENDA MEDIN</td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr><tr><td>12130</td><td>HERNANDEZ PE</td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr><tr><td>12129</td><td>GRANADOS CAR</td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr><tr><td>12131</td><td>HERNANDEZ PE</td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr><tr><td>12127</td><td>BRENDA MEDIN</td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr><tr><td>12126</td><td>ARCE ORTEGA </td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr><tr><td>12125</td><td>ARCE ORTEGA </td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr><tr><td>12132</td><td>HERNANDEZ PE</td><td style='color:#b91c1c; font-weight:bold;'>3.6D</td></tr></tbody></table></div>
+                </div>
+                <div style="display: table-cell; border: 1px solid #fef3c7; border-radius: 8px; padding: 10px; background:#fffdf0; width:50%; vertical-align: top;">
+                    <div style="color:#92400e; font-weight:bold; font-size:11px; margin-bottom:10px;">POR VENCER (48 - 72 HRS)</div>
+                    <div style="max-height: 350px; overflow-y: auto;"><table><tbody></tbody></table></div>
+                </div>
+            </div>
+
+            <div id="user" class="sh">2. ANÁLISIS DE USUARIOS <a href="#top" class="top-l">↑ MENU</a></div>
+            <div style="max-height:350px; overflow-y:auto;"><table><thead><tr><th onclick="sortTable(this, false)">USUARIO</th><th onclick="sortTable(this, true)">TOTAL</th><th onclick="sortTable(this, true)">CERRADOS</th><th onclick="sortTable(this, true)">CERRADOS TIEMPO</th><th onclick="sortTable(this, true)">CERRADOS FUERA SLA</th><th onclick="sortTable(this, true)">ABIERTOS TIEMPO</th><th onclick="sortTable(this, true)">ABIERTOS FUERA SLA</th><th onclick="sortTable(this, true)">KPI %</th><th onclick="sortTable(this, true)">AVG ATT</th></tr></thead>
+            <tbody><tr><td><b>DANIEL SANCHEZ</b></td><td>30</td><td>25</td><td>15</td><td>10</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>5</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 50.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">50.0%</span>
+    </td><td>10.4D</td></tr><tr><td><b>DARINKA VALENCIA</b></td><td>30</td><td>25</td><td>11</td><td>14</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>4</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 36.666666666666664%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">36.7%</span>
+    </td><td>7.6D</td></tr><tr><td><b>BRENDA MEDINA</b></td><td>28</td><td>24</td><td>8</td><td>16</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>3</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 28.57142857142857%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">28.6%</span>
+    </td><td>8.4D</td></tr><tr><td><b>MARIN DIAZ DELIA BRISEIDA     </b></td><td>28</td><td>25</td><td>13</td><td>12</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 46.42857142857143%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">46.4%</span>
+    </td><td>6.5D</td></tr><tr><td><b>HERNANDEZ DIEGO VERONICA      </b></td><td>23</td><td>20</td><td>15</td><td>5</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>3</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 65.21739130434783%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">65.2%</span>
+    </td><td>4.0D</td></tr><tr><td><b>REYES NOYOLA JUAN CARLOS      </b></td><td>14</td><td>9</td><td>8</td><td>1</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>5</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 57.14285714285714%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">57.1%</span>
+    </td><td>9.5D</td></tr><tr><td><b>ARCE ORTEGA IVAN MISAEL       </b></td><td>13</td><td>9</td><td>4</td><td>5</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>3</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 30.76923076923077%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">30.8%</span>
+    </td><td>4.7D</td></tr><tr><td><b>CITLALLI HUERTA</b></td><td>13</td><td>12</td><td>10</td><td>2</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 76.92307692307693%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">76.9%</span>
+    </td><td>3.0D</td></tr><tr><td><b>GRANADOS CARRILLO EDUARDO     </b></td><td>13</td><td>9</td><td>4</td><td>5</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>4</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 30.76923076923077%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">30.8%</span>
+    </td><td>6.3D</td></tr><tr><td><b>MICHELLE MORENO</b></td><td>12</td><td>11</td><td>8</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 66.66666666666666%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">66.7%</span>
+    </td><td>5.0D</td></tr><tr><td><b>IBARRA GONZALEZ CARLOS        </b></td><td>12</td><td>12</td><td>4</td><td>8</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 33.33333333333333%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">33.3%</span>
+    </td><td>11.6D</td></tr><tr><td><b>PAEZ LOPEZ PAZ BEATRIZ        </b></td><td>11</td><td>8</td><td>3</td><td>5</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>3</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 27.27272727272727%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">27.3%</span>
+    </td><td>7.3D</td></tr><tr><td><b>HERNANDEZ PEREZ DELFINA CRISTI</b></td><td>11</td><td>7</td><td>5</td><td>2</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>3</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 45.45454545454545%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">45.5%</span>
+    </td><td>2.2D</td></tr><tr><td><b>VELIA AVENDAÑO</b></td><td>10</td><td>10</td><td>8</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 80.0%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">80.0%</span>
+    </td><td>2.7D</td></tr><tr><td><b>VALERIA SOLIS</b></td><td>10</td><td>6</td><td>3</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>4</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 30.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">30.0%</span>
+    </td><td>16.4D</td></tr><tr><td><b>ELIZABETH ORTIZ</b></td><td>9</td><td>6</td><td>3</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>3</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 33.33333333333333%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">33.3%</span>
+    </td><td>7.9D</td></tr><tr><td><b>VALENCIA GARCIA LEONOR MONTSER</b></td><td>9</td><td>9</td><td>5</td><td>4</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 55.55555555555556%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">55.6%</span>
+    </td><td>7.8D</td></tr><tr><td><b>JULIO DOMINGUEZ</b></td><td>9</td><td>7</td><td>4</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 44.44444444444444%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">44.4%</span>
+    </td><td>10.4D</td></tr><tr><td><b>MICHEL BAZAN</b></td><td>8</td><td>5</td><td>2</td><td>3</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 25.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">25.0%</span>
+    </td><td>3.8D</td></tr><tr><td><b>JHOVANY RAMIREZ</b></td><td>8</td><td>6</td><td>5</td><td>1</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 62.5%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">62.5%</span>
+    </td><td>18.0D</td></tr><tr><td><b>SERGIO ALCALA</b></td><td>8</td><td>7</td><td>3</td><td>4</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 37.5%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">37.5%</span>
+    </td><td>6.6D</td></tr><tr><td><b>LILIANA MENDEZ</b></td><td>8</td><td>6</td><td>4</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 50.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">50.0%</span>
+    </td><td>14.8D</td></tr><tr><td><b>MANUEL AGUILAR</b></td><td>7</td><td>6</td><td>3</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 42.857142857142854%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">42.9%</span>
+    </td><td>11.1D</td></tr><tr><td><b>KEVIN MATUS</b></td><td>7</td><td>7</td><td>0</td><td>7</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 0.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">0.0%</span>
+    </td><td>7.0D</td></tr><tr><td><b>EVELINE GARCIA</b></td><td>6</td><td>5</td><td>3</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 50.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">50.0%</span>
+    </td><td>3.4D</td></tr><tr><td><b>REYES VIELMA EDGAR MANUEL     </b></td><td>6</td><td>6</td><td>4</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 66.66666666666666%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">66.7%</span>
+    </td><td>4.5D</td></tr><tr><td><b>FRIDA TINOCO</b></td><td>5</td><td>5</td><td>2</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 40.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">40.0%</span>
+    </td><td>7.8D</td></tr><tr><td><b>CONTRERAS GONZALEZ MIGUEL ANGE</b></td><td>5</td><td>5</td><td>2</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 40.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">40.0%</span>
+    </td><td>5.4D</td></tr><tr><td><b>JAZMIN MENDEZ</b></td><td>5</td><td>5</td><td>4</td><td>1</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 80.0%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">80.0%</span>
+    </td><td>2.6D</td></tr><tr><td><b>DIEGO JIMÉNEZ</b></td><td>4</td><td>4</td><td>2</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 50.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">50.0%</span>
+    </td><td>7.8D</td></tr><tr><td><b>ANDRÉS REBOLLO</b></td><td>4</td><td>2</td><td>0</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 0.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">0.0%</span>
+    </td><td>10.3D</td></tr><tr><td><b>MAHATMA RÍOS</b></td><td>4</td><td>3</td><td>1</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 25.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">25.0%</span>
+    </td><td>9.7D</td></tr><tr><td><b>LIZETE CORTES</b></td><td>4</td><td>4</td><td>2</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 50.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">50.0%</span>
+    </td><td>4.5D</td></tr><tr><td><b>RODRIGUEZ BARRERA ANGEL ARTURO</b></td><td>4</td><td>2</td><td>2</td><td>0</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 50.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">50.0%</span>
+    </td><td>2.5D</td></tr><tr><td><b>NIETO HERNANDEZ MARIA DE LOURD</b></td><td>4</td><td>2</td><td>0</td><td>2</td><td style='color:#10b981; font-weight:bold;'>1</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 0.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">0.0%</span>
+    </td><td>24.3D</td></tr><tr><td><b>AGLAE GARRIDO</b></td><td>3</td><td>3</td><td>0</td><td>3</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 0.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">0.0%</span>
+    </td><td>15.0D</td></tr><tr><td><b>ROMELIA FABIAN</b></td><td>3</td><td>3</td><td>2</td><td>1</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 66.66666666666666%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">66.7%</span>
+    </td><td>5.3D</td></tr><tr><td><b>LESLY RAMÍRE</b></td><td>2</td><td>2</td><td>1</td><td>1</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 50.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">50.0%</span>
+    </td><td>10.0D</td></tr><tr><td><b>TORRES MILLA GRACIELA         </b></td><td>2</td><td>2</td><td>0</td><td>2</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 0.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">0.0%</span>
+    </td><td>12.0D</td></tr><tr><td><b>HERNANDEZ ROMERO ROCIO        </b></td><td>2</td><td>1</td><td>0</td><td>1</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 0.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">0.0%</span>
+    </td><td>14.8D</td></tr></tbody></table></div>
+
+            <div id="tech" class="sh">3. EVALUACIÓN DE TÉCNICOS <a href="#top" class="top-l">↑ MENU</a></div>
+            <table><thead><tr><th onclick="sortTable(this, false)">RESPONSABLE</th><th onclick="sortTable(this, true)">TOTAL</th><th onclick="sortTable(this, true)">CERRADOS</th><th onclick="sortTable(this, true)">CERRADOS TIEMPO</th><th onclick="sortTable(this, true)">CERRADOS FUERA SLA</th><th onclick="sortTable(this, true)">ABIERTOS TIEMPO</th><th onclick="sortTable(this, true)">ABIERTOS FUERA SLA</th><th onclick="sortTable(this, true)">KPI %</th></tr></thead>
+            <tbody><tr><td>SALAZAR MARTINEZ ERNESTO</td><td>169</td><td>151</td><td>73</td><td>78</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>18</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 43.19526627218935%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">43.2%</span>
+    </td></tr><tr><td>GARCIA ROMERO MANUEL</td><td>99</td><td>80</td><td>39</td><td>41</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>19</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 39.39393939393939%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">39.4%</span>
+    </td></tr><tr><td>ERICK POZAS</td><td>41</td><td>40</td><td>26</td><td>14</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 63.41463414634146%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">63.4%</span>
+    </td></tr><tr><td>CLEMENTE CLEMENTE ELIZABETH</td><td>40</td><td>38</td><td>29</td><td>9</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 72.5%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">72.5%</span>
+    </td></tr><tr><td>SIN ASIGNAR</td><td>22</td><td>0</td><td>0</td><td>0</td><td style='color:#10b981; font-weight:bold;'>9</td><td style='color:#ef4444; font-weight:bold;'>13</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 0.0%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">0.0%</span>
+    </td></tr><tr><td>CASAS VALDEZ VICTOR MANUEL</td><td>18</td><td>10</td><td>4</td><td>6</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>8</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 22.22222222222222%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">22.2%</span>
+    </td></tr><tr><td>SABINO NAVARRO</td><td>9</td><td>8</td><td>3</td><td>5</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 33.33333333333333%; background-color: #f59e0b; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">33.3%</span>
+    </td></tr><tr><td>JAIME CABALLERO</td><td>6</td><td>4</td><td>4</td><td>0</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 66.66666666666666%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">66.7%</span>
+    </td></tr><tr><td>DANIEL OCHOA</td><td>4</td><td>4</td><td>3</td><td>1</td><td style='color:#10b981; font-weight:bold;'>0</td><td style='color:#ef4444; font-weight:bold;'>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 75.0%; background-color: #1a73e8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">75.0%</span>
+    </td></tr></tbody></table>
+
+            <div id="cat" class="sh">4. ANÁLISIS DE CATEGORÍAS (PARETO) <a href="#top" class="top-l">↑ MENU</a></div>
+            <table><thead><tr><th onclick="sortTable(this, false)">CATEGORÍA</th><th onclick="sortTable(this, true)">TOTAL</th><th onclick="sortTable(this, true)">ABIERTOS</th><th onclick="sortTable(this, true)">IMPACTO %</th></tr></thead>
+            <tbody><tr><td>OTROS</td><td>155</td><td>27</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 55.88235294117647%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">55.9%</span>
+    </td></tr><tr><td>SISTEMA ERP OPERACIONES</td><td>65</td><td>8</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 82.1078431372549%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">82.1%</span>
+    </td></tr><tr><td>SISTEMA ERP ADMINISTRACION</td><td>26</td><td>6</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 63.23529411764706%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">63.2%</span>
+    </td></tr><tr><td>TRANSFER-REPORTE</td><td>25</td><td>5</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 99.01960784313727%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">99.0%</span>
+    </td></tr><tr><td>CORREO ELECTRONICO</td><td>22</td><td>5</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 10.294117647058822%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">10.3%</span>
+    </td></tr><tr><td>TORRE DE CONTROL</td><td>19</td><td>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 92.8921568627451%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">92.9%</span>
+    </td></tr><tr><td>MODULO SCT</td><td>17</td><td>4</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 17.892156862745097%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">17.9%</span>
+    </td></tr><tr><td>SISTEMA OPERATIVO</td><td>16</td><td>4</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 86.27450980392157%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">86.3%</span>
+    </td></tr><tr><td>SISTEMA ERP COMERCIAL</td><td>12</td><td>3</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 66.17647058823529%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">66.2%</span>
+    </td></tr><tr><td>CONEXION  SISTEMA ERP</td><td>8</td><td>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 1.9607843137254901%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">2.0%</span>
+    </td></tr><tr><td>TELEFONIA</td><td>8</td><td>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 88.23529411764706%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">88.2%</span>
+    </td></tr><tr><td>INSTALACION HARDWARE</td><td>7</td><td>1</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 12.009803921568627%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">12.0%</span>
+    </td></tr><tr><td>INSTALACION SOFTWARE</td><td>7</td><td>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 13.725490196078432%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">13.7%</span>
+    </td></tr><tr><td>CONSULTA TI</td><td>6</td><td>0</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 4.901960784313726%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">4.9%</span>
+    </td></tr><tr><td>CONEXION RED</td><td>6</td><td>2</td><td>
+    <div style="width: 60px; background-color: #f1f3f4; border-radius: 4px; height: 10px; display: inline-block; vertical-align: middle;">
+        <div style="width: 3.431372549019608%; background-color: #94a3b8; height: 10px; border-radius: 4px;"></div>
+    </div>
+    <span style="font-size: 10px; margin-left: 2px; font-weight: bold;">3.4%</span>
+    </td></tr></tbody></table>
+        </div>
+        <div style="padding:15px; border-top:1px solid #f1f1f1; text-align:center; font-size:10px; color:#aaa;">AUDITADO POR CINLAT LOGISTICS S.A. DE C.V. © 2026</div>
+    </div>
+    </body></html>
+    

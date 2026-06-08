@@ -1,0 +1,14 @@
+# Python/PyInstaller folders
+__pycache__/
+build/
+dist/
+
+# Sensitive Configuration
+config.json
+
+# Excel and data reports (ignore generated spreadsheets and logs)
+*.xlsx
+*.log
+*.csv
+*.html.resolved
+*.spec

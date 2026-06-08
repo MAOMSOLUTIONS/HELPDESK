@@ -1,0 +1,145 @@
+# Dashboard Maestro: Optimización Logística Movado (Q1 2026)
+
+Este panel unifica toda la inteligencia estratégica y financiera para la transformación de la red logística de Movado.
+
+---
+
+## 📈 Resumen de Impacto Financiero
+| Concepto | Línea Base (Hoy) | Meta Optimizada | Beneficio (Ahorro) |
+| :--- | :--- | :--- | :--- |
+| **Gasto Trimestral** | **$3,212,305.67** | **$910,000.00** | **$2,302,305.67** |
+| **Viajes Dedicados** | 337 | 202 | **-135 Viajes** |
+| **Costo por Pieza (CPP)** | $115.20 | **$32.64** | **-72%** |
+
+---
+
+<details>
+<summary><b>🔍 SECCIÓN 1: Diagnóstico de Eficiencia y Utilización</b></summary>
+<br>
+
+El análisis revela una ineficiencia estructural masiva. La mayoría de los viajes dedicados están operando con camiones sobredimensionados para el volumen real.
+
+### Utilización Física de la Flota
+![Distribución de Utilización](/distribucion_utilizacion.png)
+
+### Pareto de Gasto por Región (100% Auditado)
+| REGION | GASTO (Q1) | PIEZAS | % GASTO | OBS. |
+| :--- | :---: | :---: | :---: | :--- |
+| **FORANEO** | $121,516 | 206 | 3.78% | Prioridad 1: Outsourcing masivo. |
+| **JAL.** | $56,500 | 182 | 1.76% | Candidato a Milk Run regional. |
+| **BAJA** | $56,480 | 314 | 1.76% | Alta ineficiencia: Migrar a Paquetería. |
+| **TAM.** | $37,120 | 132 | 1.16% | Ruta subutilizada (Consolidar). |
+| **CHIH** | $32,940 | 132 | 1.03% | Costo por pieza crítico ($249/pc). |
+| **VER.** | $28,260 | 154 | 0.88% | Oportunidad de Milk Run Sur. |
+| **SIN.** | $21,740 | 113 | 0.68% | Migrar a LTL. |
+| **PUE.** | $20,570 | 136 | 0.64% | Consolidación local. |
+| **QRO.** | $20,381 | 117 | 0.63% | Milk Run Bajío 1. |
+| **GTO.** | $19,780 | 50 | 0.62% | Milk Run Bajío 2. |
+| **OTROS (71 REG)** | **$2,796,587** | **26,399** | **87.06%** | El "Long Tail" de 71 regiones menores. |
+| **TOTAL** | **$3,212,305** | **27,885** | **100.00%** | Auditoría SCT Q1 2026. |
+
+> [!IMPORTANT]
+> **Nota sobre el 100%**: El gasto está altamente atomizado. Mientras el Top 10 concentra el volumen crrecto, el 87% del gasto se diluye en 71 regiones con frecuencias esporádicas.
+
+---
+</details>
+
+<details>
+<summary><b>📦 SECCIÓN 2: Fase 1 - Outsourcing LTL (104 Rutas Críticas)</b></summary>
+<br>
+
+Hemos identificado 104 frecuencias semanales que mueven menos de 100 piezas. Mantener transporte dedicado para estos volúmenes es insostenible.
+
+### Tabla de Ahorro por Outsourcing
+| Métrica | Valor |
+| :--- | :--- |
+| **Gasto Actual (104 Frecuencias)** | **$484,792.00** |
+| **Costo Proyectado Paquetería/LTL** | $145,437.60 |
+| **Ahorro Neto Inmediato** | **$339,354.40** |
+
+> [!TIP]
+> **Acción Inmediata**: Notificar a transportistas de bajo volumen e iniciar integración con la red de consolidación (UPS/LTL).
+
+[Descargar Listado de 104 Frecuencias (CSV)](file:///c:/Users/DIRECCION-TI/OneDrive%20-%20CINLAT%20LOGISTICS%20S.A. de C.V/Miguel%20Ochoa/2025-A/MVP/Gastos/Lista_Outsourcing_104_Frecuencias.csv)
+
+---
+</details>
+
+<details>
+<summary><b>📊 SECCIÓN 3: Carrier Scorecard & Fragmentación</b></summary>
+<br>
+
+Hemos evaluado el desempeño de la base de transporte para identificar ineficiencias por proveedor.
+
+### Carrier Scorecard (Q1)
+| TRANSPORTISTA | MONTO | PIEZAS | CPP (Costo x Pieza) | PZAS/VIAJE |
+| :--- | :---: | :---: | :---: | :---: |
+| **LOGISTICA MOVADO** | $1,865,239 | 10,385 | **$179.61** | 58 |
+| **LOGISTICA** | $186,714 | 3,513 | $53.15 | 185 |
+| **LOGIS SC** | $144,930 | 2,784 | $52.06 | 214 |
+| **SERVICIO EXPRESS** | $47,530 | 1,115 | $42.63 | 223 |
+| **UPS** | $60,492 | 1,566 | $38.63 | 224 |
+| **ADUANERO** | $29,820 | 1,068 | **$27.92** | 534 |
+
+> [!WARNING]
+> **Hallazgo Crítico**: El transporte propio (Logística Movado) es el más ineficiente, con un CPP de **$179.61**, casi 6 veces más caro que el servicio externo mejor evaluado.
+
+### Fragmentación: "Envíos Hormiga"
+Se detectaron múltiples regiones recibiendo demasiados viajes en la misma semana.
+| REGION | SEMANA | VIAJES EN LA SEMANA | OPORTUNIDAD |
+| :--- | :---: | :---: | :--- |
+| **PUE.** | 3 | 8 | Consolidar en 1 solo viaje 3.5t |
+| **TAM.** | 1 | 8 | Consolidar en 1 solo viaje 3.5t |
+| **CHIH** | 2 | 6 | Alta fragmentación regional |
+| **GTO.** | 1 | 6 | Oportunidad Milk Run Bajío |
+
+---
+</details>
+
+<details>
+<summary><b>🚛 SECCIÓN 4: Fase 2 - Reingeniería de Flota (Milk Runs)</b></summary>
+<br>
+
+El ahorro más grande se captura mediante la reducción del 40% de la flota dedicada, consolidando múltiples destinos en unidades de mayor capacidad (3.5t).
+
+### Comparativa de Densidad de Carga
+| Métrica | Hoy | Con Milk Runs | Mejora |
+| :--- | :--- | :--- | :--- |
+| **Piezas por Viaje** | 82 pcs | 138 pcs | **+68%** |
+| **Costo por Viaje (Avg)** | $9,532 | $4,504* | **-53%** |
+
+*\*Basado en consolidación de 2 destinos por viaje.*
+
+---
+</details>
+
+<details>
+<summary><b>🎓 SECCIÓN 4: Estrategia Experta y Sostenibilidad</b></summary>
+<br>
+
+Visión avanzada para convertir la logística de Movado en una ventaja competitiva.
+
+### Pilares de Nivel Experto
+1.  **Backhauling**: Capturar devoluciones en los camiones de regreso (Gasto $0 en retornos).
+2.  **Ingeniería de Empaque**: Reducir el tamaño de las cajas master para meter un 15% más de piezas por flete.
+3.  **Sincronización Inventario-Transporte**: Ajustar el surtido para maximizar el llenado del transporte.
+
+### 🚀 Futuras Iniciativas de Alto Impacto (Expert Logistics)
+1.  **Consolidación Multicliente (Cinlat Hub)**: Proponer a otros clientes de Cinlat compartir rutas de fletes dedicados a destinos comunes (ej. Liverpool Monterrey), dividiendo costos fijos.
+2.  **Dynamic Lead Times**: Flexibilizar las fechas de entrega con el Retailer en función del llenado del camión. Si el camión está al 90%, sale hoy; si está al 40%, se espera 24h para consolidar más pedidos.
+3.  **AI-Box Selection (Rigth-Sizing)**: Implementar una lógica de empaque que seleccione el tamaño de caja óptimo por pedido para evitar "transportar aire", reduciendo el peso volumétrico cobrado por paqueteras.
+4.  **Direct-to-Store (DTS) Bypass**: Para lanzamientos de temporada, enviar directamente del CEDIS a las tiendas TOP 20, saltando los CEDIS de los Retailers para reducir stock en tránsito y costos de handling intermedio.
+5.  **Predictive Regional Stocking**: Utilizar modelos de demanda para pre-posicionar stock de alta rotación en hubs regionales cercanos a los puntos de venta con mayor volumen, reduciendo la distancia del "Last Mile" y permitiendo el uso de transporte ligero o furgonetas eléctricas.
+6.  **Carrier Performance Scorecard**: Implementar un sistema de puntaje dinámico que asigne automáticamente más volumen a los transportistas que demuestren mayor eficiencia en costos por parada y menor índice de rechazos, incentivando la competencia por calidad.
+
+### Reporte de Impacto Ambiental (ESG)
+*   **Reducción de Viajes**: 135 viajes menos por trimestre.
+*   **Ahorro de Emisiones**: **18.5 Toneladas de CO2** anuales.
+
+---
+</details>
+
+---
+
+> [!IMPORTANT]
+> **Conclusión**: Movado tiene un potencial de ahorro acumulado proyectado de **$2.3M** trimestrales. La implementación puede iniciar de forma inmediata en la Fase 1.

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINLAT | Centro de Control Operativo IT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+        :root {
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(29, 78, 216, 0.1) 0%, transparent 50%);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .logo-icon {
+            width: 40px; height: 40px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .logo-text { font-size: 24px; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
+        .logo-text span { color: var(--accent); }
+
+        .time-date { text-align: right; }
+        .time { font-size: 28px; font-weight: 800; color: var(--text-primary); }
+        .date { font-size: 14px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        .main-grid {
+            flex: 1;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .card:hover::before { transform: translateX(100%); }
+
+        .card-icon {
+            width: 50px; height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+            transition: 0.3s;
+        }
+
+        .card:hover .card-icon {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .card-title { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .status-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; }
+
+        .main-card {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(17, 24, 39, 0.7));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .main-card .card-title { font-size: 32px; }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* SVG ICONS */
+        .icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <div class="logo-icon">
+                <svg class="icon" style="color:white" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-11h-9l1-8z"></path></svg>
+            </div>
+            <div class="logo-text">OMEGA<span>FUSION</span> <small style="font-size: 10px; opacity: 0.5; vertical-align: middle; margin-left: 10px;">OPERATIONS HUB</small></div>
+        </div>
+        <div class="time-date">
+            <div id="clock" class="time">00:00:00</div>
+            <div id="date" class="date">Lunes, 20 de Abril</div>
+        </div>
+    </header>
+
+    <div class="main-grid">
+        <!-- 1. ACTIVE DASHBOARD (MAIN) -->
+        <a href="priority_dashboard.html" target="_blank" class="card main-card">
+            <div>
+                <div class="card-icon">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                </div>
+                <div class="card-title">Prioridades IT (Dashboard Dinámico)</div>
+                <div class="card-desc">Acceso a la matriz de requerimientos en tiempo real. Incluye filtros inteligentes, búsqueda global y categorización automática P/T.</div>
+            </div>
+            <div class="status-badge">
+                <span class="status-dot"></span> LIVE V49 ACTIVE
+            </div>
+        </a>
+
+        <!-- 2. HELPDESK MANAGEMENT -->
+        <a href="premium_report_concise.html" target="_blank" class="card">
+            <div>
+                <div class="card-icon">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                </div>
+                <div class="card-title">HelpDesk Concise</div>
+                <div class="card-desc">Reporte ejecutivo de estatus de tickets y métricas SLA acumuladas.</div>
+            </div>
+            <div class="status-badge" style="background: rgba(59, 130, 246, 0.1); color: var(--accent);">
+                <span class="status-dot" style="background: var(--accent); box-shadow: 0 0 10px var(--accent);"></span> UPDATED
+            </div>
+        </a>
+
+        <!-- 3. EXCEL SOURCE -->
+        <a href="Requerimientos_IT_24_04_2026_VF2.xlsx" download class="card">
+            <div>
+                <div class="card-icon">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <div class="card-title">Base de Datos Excel</div>
+                <div class="card-desc">Descarga directa del archivo de requerimientos IT versión 24/04/2026 VF2.</div>
+            </div>
+            <div class="status-badge" style="background: rgba(255,255,255,0.05); color: #fff;">
+                XLSX SOURCE
+            </div>
+        </a>
+
+        <!-- 4. FULL PREMIUM REPORT -->
+        <a href="premium_report_full.html" target="_blank" class="card">
+            <div>
+                <div class="card-icon">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a4 4 0 0 0-4-4H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a4 4 0 0 1 4-4h6z"></path></svg>
+                </div>
+                <div class="card-title">Reporte Integral IT</div>
+                <div class="card-desc">Visualización detallada de todos los indicadores técnicos y operativos mensuales.</div>
+            </div>
+        </a>
+
+        <!-- 5. SYSTEM SETTINGS / UTILS -->
+        <div class="card" style="cursor: default; opacity: 0.8;">
+            <div>
+                <div class="card-icon" style="color: #64748b;">
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </div>
+                <div class="card-title">Configuración</div>
+                <div class="card-desc">Panel de administración de destinatarios y programación automática.</div>
+            </div>
+            <div class="status-badge" style="background: rgba(148, 163, 184, 0.1); color: #64748b;">
+                LOCKED
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        CINLAT LOGISTICS &bull; ECOSISTEMA OMEGAFUSION &bull; 2026
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('es-MX', { hour12: false });
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('es-MX', dateOptions);
+            
+            document.getElementById('clock').textContent = time;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
