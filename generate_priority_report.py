@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 
 # Paths
-INPUT_FILE = r"C:\Users\DIRECCION-TI\OneDrive - CINLAT LOGISTICS S.A. de C.V\Miguel Ochoa\2025-A\MVP\HelpDesk\Prioridades_IT_2026_2_06_2026.xlsx"
+INPUT_FILE = r"C:\Users\DIRECCION-TI\OneDrive - CINLAT LOGISTICS S.A. de C.V\Miguel Ochoa\2025-A\MVP\HelpDesk\Prioridades_IT_2026_15_06_2026.xlsx"
 
 # ICONS (Lucide Style Inline SVGs - Fine Strokes)
 ICO_SEARCH = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>'
@@ -50,14 +50,14 @@ def generate_report():
         col_str = str(col)
         if 't' in col_str and 'rmino' in col_str:
             new_cols[col] = 'Fecha_trmino'
-        elif col_str == 'Vista':
-            new_cols[col] = 'mes'
         else:
             new_cols[col] = col_str
     df = df.rename(columns=new_cols)
     
-    if 'mes' not in df.columns:
-        df['mes'] = ""
+    if 'Vista' not in df.columns:
+        df['Vista'] = ""
+    if 'Recursos' not in df.columns:
+        df['Recursos'] = ""
     
     # DATA PREP
     def format_date_html(val):
@@ -148,7 +148,7 @@ def generate_report():
 
     # Lists for checklist filters
     id_list = get_clean_list('ID')
-    mes_list = get_clean_list('mes')
+    vista_list = get_clean_list('Vista')
     clientes_list = get_clean_list('Cliente')
     estatus_list = get_clean_list('Estatus')
     prioridades_list = get_clean_list('Filtro MAO', is_priority=True)
@@ -455,7 +455,7 @@ def generate_report():
         };
         
         const selectedIds = getCheckedValues("msId");
-        const selectedMes = getCheckedValues("msMes");
+        const selectedVista = getCheckedValues("msVista");
         const selectedClients = getCheckedValues("msClient");
         const selectedStatuses = getCheckedValues("msStatus");
         const selectedPriorities = getCheckedValues("msPriority");
@@ -470,7 +470,7 @@ def generate_report():
 
         tr.forEach(row => {
             const rowId = (row.getAttribute("data-id") || "").toUpperCase();
-            const rowMes = (row.getAttribute("data-mes") || "").toUpperCase();
+            const rowVista = (row.getAttribute("data-vista") || "").toUpperCase();
             const rowClient = (row.getAttribute("data-client") || "").toUpperCase();
             const rowStatus = (row.getAttribute("data-status") || "").toUpperCase();
             const rowPriority = (row.getAttribute("data-priority") || "").toUpperCase();
@@ -483,7 +483,7 @@ def generate_report():
 
             const matchesQuery = query === "" || rowReq.indexOf(query) > -1;
             const matchesId = selectedIds.length === 0 ? false : selectedIds.indexOf(rowId) > -1;
-            const matchesMes = selectedMes.length === 0 ? false : selectedMes.indexOf(rowMes) > -1;
+            const matchesVista = selectedVista.length === 0 ? false : selectedVista.indexOf(rowVista) > -1;
             const matchesClient = selectedClients.length === 0 ? false : selectedClients.indexOf(rowClient) > -1;
             const matchesStatus = selectedStatuses.length === 0 ? false : selectedStatuses.indexOf(rowStatus) > -1;
             const matchesPriority = selectedPriorities.length === 0 ? false : selectedPriorities.indexOf(rowPriority) > -1;
@@ -493,7 +493,7 @@ def generate_report():
             const matchesITTeam = selectedITTeams.length === 0 ? false : selectedITTeams.indexOf(rowITTeam) > -1;
             const matchesGroup = selectedGroup === "" || rowGroup === selectedGroup;
 
-            if (matchesQuery && matchesId && matchesMes && matchesClient && matchesStatus && matchesPriority && matchesBloque && matchesArea && matchesDevArea && matchesITTeam && matchesGroup) {
+            if (matchesQuery && matchesId && matchesVista && matchesClient && matchesStatus && matchesPriority && matchesBloque && matchesArea && matchesDevArea && matchesITTeam && matchesGroup) {
                 row.style.display = ""; visible++;
             } else {
                 row.style.display = "none";
@@ -559,10 +559,10 @@ def generate_report():
         comentarios_val = str(r['Comentarios']).replace('\n', '<br>')
 
         rows_html += f"""
-        <tr class="row-item" data-id="{clean_val(r['ID'])}" data-mes="{clean_val(r['mes'])}" data-group="{r['Group_Name']}" data-client="{clean_val(r['Cliente'])}" data-status="{clean_val(r['Estatus'])}" data-priority="{clean_val(r['Filtro MAO'])}" data-bloque="{clean_val(r['Bloque'])}" data-area="{clean_val(r['Area Desarrollo'])}" data-devarea="{clean_val(r['Area Desarrollo.1'])}" data-itteam="{clean_val(r['IT Team'])}" data-req="{str(r['Requerimiento']).strip()}" onclick="toggleFocus(this)">
+        <tr class="row-item" data-id="{clean_val(r['ID'])}" data-vista="{clean_val(r['Vista'])}" data-group="{r['Group_Name']}" data-client="{clean_val(r['Cliente'])}" data-status="{clean_val(r['Estatus'])}" data-priority="{clean_val(r['Filtro MAO'])}" data-bloque="{clean_val(r['Bloque'])}" data-area="{clean_val(r['Area Desarrollo'])}" data-devarea="{clean_val(r['Area Desarrollo.1'])}" data-itteam="{clean_val(r['IT Team'])}" data-req="{str(r['Requerimiento']).strip()}" onclick="toggleFocus(this)">
             <td align="center" bgcolor="{row_bg}" style="font-weight:700; color:{T_BLACK};">{r['SEQ_IDX']}</td>
             <td align="center" bgcolor="{row_bg}"><span class="id-badge">{id_val}</span></td>
-            <td bgcolor="{row_bg}" style="color:{T_BLACK}; font-size:12px;">{r['mes']}</td>
+            <td bgcolor="{row_bg}" style="color:{T_BLACK}; font-size:12px;">{r['Vista']}</td>
             <td bgcolor="{row_bg}" style="color:{T_BLACK}; font-size:12px;">{r['Bloque']}</td>
             <td bgcolor="{row_bg}" style="color:{T_BLACK}; font-weight:700;">{r['Cliente']}</td>
             <td bgcolor="{row_bg}" style="min-width:450px; font-weight:700; font-size:14px; color:{T_BLACK};">
@@ -579,6 +579,7 @@ def generate_report():
             <td bgcolor="{row_bg}" style="color:{T_BLACK}; white-space:nowrap;">{r['Fecha_Inicio_Display']}</td>
             <td bgcolor="{row_bg}" style="font-weight:700; color:{T_BLACK}; white-space:nowrap;">{r['Fecha_Termino_Display']}</td>
             <td bgcolor="{row_bg}" style="color:{T_BLACK}; font-size:12px;"><b>{ICO_USER} {r['IT Team']}</b></td>
+            <td bgcolor="{row_bg}" style="color:{T_BLACK}; font-size:11px;">{r['Recursos']}</td>
             <td bgcolor="{row_bg}" style="font-size:11.5px; color:{T_BLACK}; min-width:350px;">{comentarios_val}</td>
             <td bgcolor="{row_bg}" style="font-size:10px; color:{T_BLACK}; opacity:0.7;">{r['Area Desarrollo']}</td>
             <td bgcolor="{row_bg}" style="font-size:10px; color:{T_BLACK}; opacity:0.7;">{r['Area Desarrollo.1']}</td>
@@ -645,7 +646,7 @@ def generate_report():
                     <input type="text" id="searchBox" class="search-input" onkeyup="filterTable()" placeholder="Escribe para buscar por Requerimiento...">
                 </div>
                 {render_multiselect("msId", "🔑 ID", id_list)}
-                {render_multiselect("msMes", "📅 MES", mes_list)}
+                {render_multiselect("msVista", "👁️ VISTA", vista_list)}
                 {render_multiselect("msBloque", "📦 BLOQUE", bloques_list)}
                 {render_multiselect("msClient", "🏢 CLIENTE", clientes_list)}
                 {render_multiselect("msPriority", "⚡ PRIORIDAD", prioridades_list)}
@@ -672,7 +673,7 @@ def generate_report():
             
             <div style="background:var(--bg-card); border-radius:20px; border:1px solid var(--border-clr); overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.05); overflow-x: auto;">
                 <table id="mainTable">
-                    <thead><tr><th>#</th><th>ID</th><th>MES</th><th>BLOQUE</th><th>CLIENTE</th><th>REQUERIMIENTO</th><th>#REQ</th><th>PR (ID)</th><th>ESTATUS</th><th>INICIO</th><th>TÉRMINO</th><th>RESPONSABLE</th><th>NOTAS</th><th>AREA DE ESTIMADO</th><th>AREA DE DESARROLLO</th></tr></thead>
+                    <thead><tr><th>#</th><th>ID</th><th>VISTA</th><th>BLOQUE</th><th>CLIENTE</th><th>REQUERIMIENTO</th><th>#REQ</th><th>PR (ID)</th><th>ESTATUS</th><th>INICIO</th><th>TÉRMINO</th><th>RESPONSABLE</th><th>RECURSOS</th><th>NOTAS</th><th>AREA DE ESTIMADO</th><th>AREA DE DESARROLLO</th></tr></thead>
                     <tbody>{rows_html}</tbody>
                 </table>
             </div>
